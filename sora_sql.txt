@@ -1,0 +1,51 @@
+table user {
+  id int [pk, not null, unique]
+  name varchar [not null]
+  surname varchar [not null]
+  password varchar [not null]
+  email varchar [unique, not null]
+  date_of_registration datetime [not null]
+}
+
+table phone {
+  id int [pk]
+  id_user int [not null]
+  id_product int [not null]
+  id_quality int [not null]
+  date_of_publication datetime [not null]
+  is_send boolean [not null]
+}
+
+table brand {
+  id varchar [pk]
+  brand varchar
+}
+
+table product {
+  id int [pk]
+  product varchar
+  id_brand varchar
+}
+
+table tarif {
+  id_brand varchar [pk]
+  id_quality int [pk]
+  price double
+}
+
+table quality {
+  id int [pk]
+  quality varchar
+}
+
+Ref: "phone"."id_user" > "user"."id"
+
+Ref: "quality"."id" < "phone"."id_quality"
+
+Ref: "quality"."id" < "tarif"."id_quality"
+
+Ref: "brand"."id" < "product"."id_brand"
+
+Ref: "phone"."id_product" < "product"."id"
+
+Ref: "brand"."brand" < "tarif"."id_brand"
