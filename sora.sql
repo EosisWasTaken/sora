@@ -1,5 +1,5 @@
 CREATE TABLE `user` (
-  `id` int UNIQUE PRIMARY KEY NOT NULL,
+  `id` int UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `surname` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE `user` (
 );
 
 CREATE TABLE `phone` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `id_user` int NOT NULL,
   `id_product` int,
   `id_quality` int,
@@ -17,12 +17,12 @@ CREATE TABLE `phone` (
 );
 
 CREATE TABLE `brand` (
-  `id` int UNIQUE PRIMARY KEY NOT NULL,
+  `id` int UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `name` varchar(255)
 );
 
 CREATE TABLE `product` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `product` varchar(255),
   `id_brand` int
 );
@@ -34,7 +34,7 @@ CREATE TABLE `tarif` (
 );
 
 CREATE TABLE `quality` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `quality` varchar(255)
 );
 
