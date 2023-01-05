@@ -17,18 +17,18 @@ CREATE TABLE `phone` (
 );
 
 CREATE TABLE `brand` (
-  `id` varchar(255) PRIMARY KEY,
-  `brand` varchar(255)
+  `id` int UNIQUE PRIMARY KEY NOT NULL,
+  `name` varchar(255)
 );
 
 CREATE TABLE `product` (
   `id` int PRIMARY KEY,
   `product` varchar(255),
-  `id_brand` varchar(255)
+  `id_brand` int
 );
 
 CREATE TABLE `tarif` (
-  `id_brand` varchar(255),
+  `id_brand` int,
   `id_quality` int,
   `price` double
 );
