@@ -1,5 +1,5 @@
 table user {
-  id int [pk, not null, unique]
+  id int [pk, not null, unique, increment]
   name varchar [not null]
   surname varchar [not null]
   password varchar [not null]
@@ -8,7 +8,7 @@ table user {
 }
 
 table phone {
-  id int [pk]
+  id int [pk, increment]
   id_user int [not null]
   id_product int [not null]
   id_quality int [not null]
@@ -17,24 +17,24 @@ table phone {
 }
 
 table brand {
-  id varchar [pk]
-  brand varchar
+  id int [pk, increment]
+  name varchar
 }
 
 table product {
-  id int [pk]
+  id int [pk, increment]
+  id_brand int
   product varchar
-  id_brand varchar
 }
 
 table tarif {
-  id_brand varchar [pk]
+  id_brand int [pk]
   id_quality int [pk]
   price double
 }
 
 table quality {
-  id int [pk]
+  id int [pk, increment]
   quality varchar
 }
 
@@ -46,6 +46,6 @@ Ref: "quality"."id" < "tarif"."id_quality"
 
 Ref: "brand"."id" < "product"."id_brand"
 
-Ref: "phone"."id_product" < "product"."id"
+Ref: "phone"."id_product" > "product"."id"
 
-Ref: "brand"."brand" < "tarif"."id_brand"
+Ref: "brand"."id" < "tarif"."id_brand"
